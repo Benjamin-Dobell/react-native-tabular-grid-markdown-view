@@ -1,1 +1,1 @@
-# `react-native-tabular-grid` Tabular grid for react-native
+# Tabular grid for react-native
