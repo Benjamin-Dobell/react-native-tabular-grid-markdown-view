@@ -4,20 +4,15 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, {Component} from 'react';
+import {AppRegistry} from 'react-native';
 
 import GridExample from './GridExample';
 
 export default class example extends Component {
-  render() {
-    return <GridExample />;
-  }
+    render() {
+        return <GridExample />;
+    }
 }
 
 AppRegistry.registerComponent('example', () => example);
