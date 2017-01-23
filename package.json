@@ -26,6 +26,7 @@
     "eslint-config-xo-space": "^0.15.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-react": "^6.3.0",
+    "jasmine-reporters": "^2.2.0",
     "jest": "^15.1.1",
     "semantic-release": "^6.3.2"
   },
@@ -47,6 +48,10 @@
       "text"
     ],
     "setupTestFrameworkScriptFile": "jestSupport/setupJasmine.js",
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/example/"
+    ],
     "automock": true,
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/"
