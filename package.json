@@ -29,6 +29,10 @@
     "jest": "^15.1.1",
     "semantic-release": "^6.3.2"
   },
+  "peerDependencies": {
+    "react": "^15.4.2",
+    "react-native": ">=0.41.0"
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",

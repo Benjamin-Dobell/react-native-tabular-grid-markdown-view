@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
+import style from './style';
+
 export default class Row extends Component {
 
     static propTypes = {
@@ -27,6 +29,6 @@ export default class Row extends Component {
     }
 
     render() {
-        return <View>{this.props.children}</View>;
+        return <View style={style.row}>{this.props.children}</View>;
     }
 }

@@ -2,22 +2,30 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     grid: {
-        flexDirection: 'row',
         flex: 1,
-        margin: 2
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        borderColor: 'lightgrey',
+        borderLeftWidth: 1,
+        borderBottomWidth: 1
+    },
+    gridColumn: {
+        flexDirection: 'row'
+    },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'stretch'
     },
     column: {
-        flex: 1,
-        flexGrow: 1,
-        flexDirection: 'column'
-    },
-    cellColumn: {
         flexDirection: 'column',
-        margin: 2
+        flexGrow: 1,
+        flexShrink: 1,
+        borderColor: 'lightgrey',
+        borderRightWidth: 1
     },
     cell: {
-        backgroundColor: 'grey',
         padding: 4,
-        flex: 1
+        borderColor: 'lightgrey',
+        borderTopWidth: 1
     }
 });

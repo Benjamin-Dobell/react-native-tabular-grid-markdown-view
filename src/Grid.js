@@ -89,14 +89,16 @@ export default class Grid extends Component {
 
     render() {
         if (!this.columns.length) {
-            return <View>{this.props.children}</View>;
+            return <View style={style.grid}>{this.props.children}</View>;
         }
         return (
-            <View style={style.grid}>
-            {this.columns.map(col => (
-                <View style={style.column}>
+            <View style={[style.grid, style.gridColumn]}>
+            {this.columns.map((col, i) => (
+                <View key={i} style={[style.column]}>
                 {col.map((cell, index) => (
-                    <View style={[style.cellColumn, {minHeight: this.state.rowHeights[index]}]}>
+                    <View key={index} style={[
+                        {minHeight: this.state.rowHeights && this.state.rowHeights[index+1]}
+                    ]}>
                         {cell}
                     </View>
                 ))}

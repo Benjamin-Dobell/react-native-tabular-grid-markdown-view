@@ -6,7 +6,7 @@ import style from './style';
 export default class Cell extends Component {
 
     static propTypes = {
-        children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
+        children: React.PropTypes.node,
         rowId: React.PropTypes.number.isRequired,
         id: React.PropTypes.number.isRequired
     };
