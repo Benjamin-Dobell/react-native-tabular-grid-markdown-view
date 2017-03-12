@@ -92,7 +92,7 @@ export default class Grid extends Component {
             return <View style={style.grid}>{this.props.children}</View>;
         }
         return (
-            <View style={[style.grid, style.gridColumn]}>
+            <View style={[style.grid, style.gridColumn, this.props.style]}>
             {this.columns.map((col, i) => (
                 <View key={i} style={[style.column]}>
                 {col.map((cell, index) => (

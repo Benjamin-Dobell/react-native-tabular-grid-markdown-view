@@ -23,7 +23,7 @@ export default class Cell extends Component {
 
     render() {
         return (
-            <View style={style.cell} ref={this.updateCell.bind(this)}>
+            <View style={[style.cell, this.props.style]} ref={this.updateCell.bind(this)}>
                 {this.props.children}
             </View>
         );
