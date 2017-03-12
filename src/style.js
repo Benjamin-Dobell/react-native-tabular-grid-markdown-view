@@ -6,8 +6,7 @@ export default StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'stretch',
         borderColor: 'lightgrey',
-        borderLeftWidth: 1,
-        borderBottomWidth: 1
+        borderWidth: 1,
     },
     gridColumn: {
         flexDirection: 'row'
@@ -20,13 +19,12 @@ export default StyleSheet.create({
         flexDirection: 'column',
         flexGrow: 1,
         flexShrink: 1,
-        borderColor: 'lightgrey',
-        borderRightWidth: 1
     },
     cell: {
         flexGrow: 1,
         padding: 4,
         borderColor: 'lightgrey',
-        borderTopWidth: 1
+        borderBottomWidth: 1,
+        borderRightWidth: 1,
     }
 });
