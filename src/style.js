@@ -24,6 +24,7 @@ export default StyleSheet.create({
         borderRightWidth: 1
     },
     cell: {
+        flexGrow: 1,
         padding: 4,
         borderColor: 'lightgrey',
         borderTopWidth: 1
