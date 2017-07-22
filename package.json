@@ -15,6 +15,9 @@
   "keywords": [
     "react-native"
   ],
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
   "devDependencies": {
     "@taw/condition-vsts": "^1.0.5",
     "babel-core": "^6.14.0",
