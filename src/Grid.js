@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
@@ -6,12 +7,12 @@ import style from './style';
 export default class Grid extends Component {
 
     static propTypes = {
-        children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired
+        children: PropTypes.arrayOf(PropTypes.element).isRequired
     };
 
     static childContextTypes = {
-        rntgAddRowToGrid: React.PropTypes.func,
-        rntgMeasureCell: React.PropTypes.func
+        rntgAddRowToGrid: PropTypes.func,
+        rntgMeasureCell: PropTypes.func
     };
 
     constructor() {

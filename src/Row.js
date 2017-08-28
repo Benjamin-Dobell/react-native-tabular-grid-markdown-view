@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {View} from 'react-native';
 
@@ -6,16 +7,16 @@ import style from './style';
 export default class Row extends Component {
 
     static propTypes = {
-        children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
-        id: React.PropTypes.number.isRequired
+        children: PropTypes.arrayOf(PropTypes.element).isRequired,
+        id: PropTypes.number.isRequired
     };
 
     static contextTypes = {
-        rntgAddRowToGrid: React.PropTypes.func
+        rntgAddRowToGrid: PropTypes.func
     };
 
     static childContextTypes = {
-        rntgrowId: React.PropTypes.number
+        rntgrowId: PropTypes.number
     };
 
     getChildContext() {
