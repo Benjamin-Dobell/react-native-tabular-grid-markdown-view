@@ -1,6 +1,6 @@
 # react-native-tabular-grid-markdown-view
 
-![npm version](https://img.shields.io/npm/v/react-native-markdown-view.svg)
+![npm version](https://img.shields.io/npm/v/react-native-tabular-grid-markdown-view.svg)
 
 Forked from [react-native-tabular-grid](https://github.com/agilityworks-uk/react-native-tabular-grid).
 
