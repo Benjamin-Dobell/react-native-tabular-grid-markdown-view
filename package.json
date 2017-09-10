@@ -1,13 +1,22 @@
 {
-  "name": "react-native-tabular-grid",
-  "version": "0.0.0-development",
+  "name": "react-native-tabular-grid-markdown-view",
+  "version": "0.1.0",
   "description": "Tabular grid for react-native",
   "homepage": "",
   "author": {
-    "name": "Gethin Webster",
-    "email": "gethin.webster@agilityworks.co.uk",
-    "url": ""
+    "name": "Benjamin Dobell",
+    "email": "contact@glassechidna.com.au"
   },
+  "contributors": [
+    {
+      "name": "Gethin Webster",
+      "email": "gethin.webster@agilityworks.co.uk"
+    },
+    {
+      "name": "Benjamin Dobell",
+      "email": "contact@glassechidna.com.au"
+    }
+  ],
   "files": [
     "src"
   ],
@@ -75,6 +84,9 @@
       "mocha": true
     }
   },
-  "repository": "agilityworks-uk/react-native-tabular-grid",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Benjamin-Dobell/react-native-tabular-grid-markdown-view.git"
+  },
   "license": "MIT"
 }
