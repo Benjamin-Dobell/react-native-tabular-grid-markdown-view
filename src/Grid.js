@@ -28,10 +28,12 @@ export default class GridProvider extends React.PureComponent {
   componentDidUpdate() {
       // Force redraw to update column measurements
       if (this.state.redraw) {
-          this.setState({
-              redraw: false,
-              didRedraw: true
-          });
+          setTimeout(() => {
+              this.setState({
+                  redraw: false,
+                  didRedraw: true
+              });
+          }, 100);
       }
   }
 
