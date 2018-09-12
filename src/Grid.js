@@ -75,8 +75,6 @@ export default class GridProvider extends React.PureComponent {
   renderContent = () => {
       const { rowHeights, columns } = this.state;
 
-      // console.log('rowHeights', rowHeights, 'columns', columns);
-
       if (columns.length === 0) {
           return <View style={style.grid}>{this.props.children}</View>;
       }
