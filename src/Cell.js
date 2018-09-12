@@ -6,27 +6,24 @@ import GridContext from './GridContext';
 import style from './style';
 
 const Cell = props => (
-  <GridContext.Consumer>
-    {({ measureCell }) => {
-      return (
-        <View
-          style={[style.cell, props.style]}
-          onLayout={({ nativeEvent }) => {
-            const { x, y, width, height } = nativeEvent.layout;
-            measureCell(props.rowId, props.id, x, y, width, height);
-          }}
-        >
-          {props.children}
-        </View>
-      );
-    }}
-  </GridContext.Consumer>
+    <GridContext.Consumer>
+        {({ measureCell }) => (
+            <View
+                style={[style.cell, props.style]}
+                onLayout={({ nativeEvent }) => {
+                    measureCell(props.rowId, props.id, nativeEvent.layout.height);
+                }}
+            >
+                {props.children}
+            </View>
+        )}
+    </GridContext.Consumer>
 );
 
 Cell.propTypes = {
-  children: PropTypes.node,
-  rowId: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired
+    children: PropTypes.node,
+    rowId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
 };
 
 export default Cell;
