@@ -6,85 +6,106 @@ import style from './style';
 
 export default class GridProvider extends React.PureComponent {
   static propTypes = {
-    children: PropTypes.arrayOf(PropTypes.element).isRequired
+      children: PropTypes.arrayOf(PropTypes.element).isRequired
   };
 
   columns = [];
   rowHeights = {};
 
+  measured = false;
+
   state = {
-    columns: [],
-    rowHeights: {}
+      columns: [],
+      rowHeights: {},
+      redraw: false,
+      didRedraw: false
   };
 
-  get lastChild() {
-    return this.props.children[this.props.children.length - 1];
+  get lastRow() {
+      return this.props.children[this.props.children.length - 1];
+  }
+
+  componentDidUpdate() {
+      // Force redraw to update column measurements
+      if (this.state.redraw) {
+          this.setState({
+              redraw: false,
+              didRedraw: true
+          });
+      }
   }
 
   addRowToGrid = (rowId, rowChildren) => {
-    this.mapRowIntoColumns(rowChildren);
-    this.updateIfRowIsLast(rowId);
+      this.mapRowIntoColumns(rowChildren);
+      if (rowId === this.lastRow.props.id) {
+          this.setState({
+              columns: this.columns
+          });
+      }
   };
 
-  measureCell = (rowId, cellId, x, y, w, h) => {
-    this.rowHeights[rowId] = Math.max(h, this.rowHeights[rowId] || 0);
-    this.updateIfCellIsLast(rowId, cellId);
+  measureCell = (rowId, cellId, height) => {
+      this.rowHeights[rowId] = Math.max(height, this.rowHeights[rowId] || 0);
+      // Update if this is the last cell
+      if (rowId === this.lastRow.props.id) {
+          this.updateRowHeights(rowId, cellId);
+      }
   };
 
   mapRowIntoColumns(rowChildren) {
-    rowChildren.forEach((cell, index) => {
-      if (!this.columns[index]) {
-        this.columns[index] = [];
-      }
-      this.columns[index].push(cell);
-    });
-  }
-
-  updateIfRowIsLast(rowId) {
-    // If we have all rows, save the column structure into 'state' so
-    // That we can render it
-    if (rowId === this.lastChild.props.id) {
-      this.setState({
-        columns: this.columns
+      rowChildren.forEach((cell, index) => {
+          if (!this.columns[index]) {
+              this.columns[index] = [];
+          }
+          this.columns[index].push(cell);
       });
-    }
   }
 
-  updateIfCellIsLast(rowId, cellId) {
-    if (rowId === this.lastChild.props.id) {
-      const lastCell = this.lastChild.props.children[this.lastChild.props.children.length - 1];
+  updateRowHeights(rowId, cellId) {
+      this.measured = true;
+      const lastCell = this.lastRow.props.children[this.lastRow.props.children.length - 1];
       if (cellId === lastCell.props.id) {
-        this.setState({
-          rowHeights: { ...this.rowHeights }
-        });
+          this.setState(state => ({
+              rowHeights: this.rowHeights,
+              redraw: !state.didRedraw
+          }));
       }
-    }
   }
 
   renderContent = () => {
-    if (this.columns.length === 0) {
-      return <View style={style.grid}>{this.props.children}</View>;
-    }
-    return (
-      <View style={[style.grid, style.gridColumn, this.props.style]}>
-        {this.columns.map((col, i) => (
-          <View key={i} style={style.column}>
-            {col.map((cell, index) => (
-              <View key={index} style={[{ minHeight: this.state.rowHeights && this.state.rowHeights[index + 1] }]}>
-                {cell}
-              </View>
-            ))}
+      const { rowHeights, columns } = this.state;
+
+      // console.log('rowHeights', rowHeights, 'columns', columns);
+
+      if (columns.length === 0) {
+          return <View style={style.grid}>{this.props.children}</View>;
+      }
+
+      return (
+          <View style={[style.grid, style.gridColumn, this.props.style]}>
+              {columns.map((col, colIndex) => (
+                  <View key={`col.${colIndex}`} style={style.column}>
+                      {col.map((cell, rowIndex) => (
+                          <View
+                              key={`row.${rowIndex}`}
+                              style={{
+                                  minHeight: rowHeights[rowIndex + 1] || 0
+                              }}
+                          >
+                              {cell}
+                          </View>
+                      ))}
+                  </View>
+              ))}
           </View>
-        ))}
-      </View>
-    );
+      );
   };
 
   render() {
-    return (
-      <GridContext.Provider value={{ addRowToGrid: this.addRowToGrid, measureCell: this.measureCell }}>
-        {this.renderContent()}
-      </GridContext.Provider>
-    );
+      return (
+          <GridContext.Provider value={{ addRowToGrid: this.addRowToGrid, measureCell: this.measureCell }}>
+              {this.renderContent()}
+          </GridContext.Provider>
+      );
   }
 }
