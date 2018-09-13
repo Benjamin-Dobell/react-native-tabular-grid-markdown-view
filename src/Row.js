@@ -1,35 +1,21 @@
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
-import {View} from 'react-native';
-
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import GridContext from './GridContext';
 import style from './style';
 
-export default class Row extends Component {
+const Row = ({ id, children }) => (
+  <GridContext.Consumer>
+    {({ addRowToGrid }) => {
+      addRowToGrid(id, children);
+      return <View style={style.row}>{children}</View>;
+    }}
+  </GridContext.Consumer>
+);
 
-    static propTypes = {
-        children: PropTypes.arrayOf(PropTypes.element).isRequired,
-        id: PropTypes.number.isRequired
-    };
+Row.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  id: PropTypes.number.isRequired
+};
 
-    static contextTypes = {
-        rntgAddRowToGrid: PropTypes.func
-    };
-
-    static childContextTypes = {
-        rntgrowId: PropTypes.number
-    };
-
-    getChildContext() {
-        return {
-            rntgrowId: this.props.id
-        };
-    }
-
-    componentWillMount() {
-        this.context.rntgAddRowToGrid(this);
-    }
-
-    render() {
-        return <View style={style.row}>{this.props.children}</View>;
-    }
-}
+export default Row;

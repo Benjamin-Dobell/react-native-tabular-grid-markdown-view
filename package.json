@@ -17,15 +17,11 @@
       "email": "contact@glassechidna.com.au"
     }
   ],
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "main": "src/index.js",
-  "keywords": [
-    "react-native"
-  ],
+  "keywords": ["react-native"],
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.6.1"
   },
   "devDependencies": {
     "@taw/condition-vsts": "^1.0.5",
@@ -43,7 +39,7 @@
     "semantic-release": "^6.3.2"
   },
   "peerDependencies": {
-    "react": ">=15.4.2",
+    "react": ">=16.3.0",
     "react-native": ">=0.41.0"
   },
   "scripts": {
@@ -54,24 +50,12 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": [
-      "lcov",
-      "cobertura",
-      "text"
-    ],
+    "coverageReporters": ["lcov", "cobertura", "text"],
     "setupTestFrameworkScriptFile": "jestSupport/setupJasmine.js",
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/example/"
-    ],
+    "testPathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/example/"],
     "automock": true,
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ]
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/"],
+    "moduleFileExtensions": ["js", "jsx"]
   },
   "release": {
     "branch": "master",
